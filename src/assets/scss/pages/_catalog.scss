@@ -4,5 +4,42 @@
   background-color: $color--background;
 
   @media screen and #{$mq-min--pad} {
+    min-height: calc(100vh - 5.0625rem);
+
+    &__catalog-list {
+      align-self: baseline;
+    }
+  }
+
+  @media screen and #{$mq-min--desktop} {
+    display: flex;
+    padding: 0;
+
+    &__catalog-list,
+    &__basket {
+      flex-grow: 1;
+    }
+
+    &__catalog-list {
+      width: 65.8%;
+    }
+
+    &__basket {
+      width: 34.2%;
+
+      border-left: 0.0625rem solid $color--separator;
+    }
+  }
+
+  @media screen and #{$mq-min--desktop-hd} {
+    &__catalog-list {
+      width: 75%;
+    }
+
+    &__basket {
+      width: 25%;
+
+      border-left: 0.0625rem solid $color--separator;
+    }
   }
 }

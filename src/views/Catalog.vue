@@ -1,7 +1,10 @@
 <template>
   <div class="catalog">
-    <base-catalog-list :catalogItems="catalogItems" />
-    <base-basket />
+    <base-catalog-list
+      :catalogItems="catalogItems"
+      class="catalog__catalog-list"
+    />
+    <base-basket class="catalog__basket" />
   </div>
 </template>
 

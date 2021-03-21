@@ -1,15 +1,19 @@
 <template>
   <div class="catalog-list">
-    <base-catalog-item
-      class="catalog-list__item"
-      v-for="catalogItem of catalogItems"
-      :src="catalogItem.src"
-      :key="catalogItem.id"
-      :id="catalogItem.id"
-      :title="catalogItem.title"
-      :price="catalogItem.price"
-      :img="catalogItem.img"
-    />
+    <div class="catalog-list__container">
+      <div class="catalog-list__inner">
+        <base-catalog-item
+          class="catalog-list__item"
+          v-for="catalogItem of catalogItems"
+          :src="catalogItem.src"
+          :key="catalogItem.id"
+          :id="catalogItem.id"
+          :title="catalogItem.title"
+          :price="catalogItem.price"
+          :img="catalogItem.img"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
