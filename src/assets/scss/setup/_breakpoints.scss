@@ -1,0 +1,25 @@
+//breakpoints
+$bp--phone-small: 20rem; // 320px
+$bp--phone: 25.625rem; // 410px
+$bp--pad: 48rem; // 768 px
+$bp--pad-pro: 64rem; // 1024px
+$bp--desktop: 75rem; // 1200px
+$bp--desktop-hd: 102.5rem; // 1640px
+$bp--full: 120rem; // 1920px
+
+// Media Queries
+$mq-min--phone-small: "(min-width: #{$bp--phone-small})";
+$mq-min--phone: "(min-width: #{$bp--phone})";
+$mq-min--pad: "(min-width: #{$bp--pad})";
+$mq-min--pad-pro: "(min-width: #{$bp--pad-pro})";
+$mq-min--desktop: "(min-width: #{$bp--desktop})";
+$mq-min--desktop-hd: "(min-width: #{$bp--desktop-hd})";
+$mq-min--full: "(min-width: #{$bp--full})";
+
+$mq-max--phone-small: "(max-width: #{$bp--phone-small})";
+$mq-max--phone: "(max-width: #{$bp--phone})";
+$mq-max--pad: "(max-width: #{$bp--pad})";
+$mq-max--pad-pro: "(max-width: #{$bp--pad-pro})";
+$mq-max--desktop: "(max-width: #{$bp--desktop})";
+$mq-max--desktop-hd: "(max-width: #{$bp--desktop-hd})";
+$mq-max--full: "(max-width: #{$bp--full})";
