@@ -8,16 +8,18 @@
       :height="img.height"
       :width="img.width"
     />
-    <p class="catalog-item__title">{{ title }}</p>
-    <div class="catalog-item__bottom">
-      <button
-        class="button catalog-item__button catalog-item__button--add-to-cart"
-        type="button"
-        :ariaLabel="ariaLabelButtonAddToCart"
-      ></button>
-      <span class="catalog-item__price">
-        {{ price }}
-      </span>
+    <div class="catalog-item__info">
+      <p class="catalog-item__title">{{ title }}</p>
+      <div class="catalog-item__info-bottom">
+        <button
+          class="button catalog-item__button catalog-item__button--add-to-cart"
+          type="button"
+          :ariaLabel="ariaLabelButtonAddToCart"
+        ></button>
+        <span class="catalog-item__price">
+          {{ price }}
+        </span>
+      </div>
     </div>
   </router-link>
 </template>

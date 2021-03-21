@@ -1,2 +1,17 @@
 .button {
+  position: relative;
+
+  min-width: 2.5rem; // 40px
+  min-height: 2.5rem;
+  padding: 0.5rem;
+
+  background-color: $color--button-background;
+  border: none;
+  border-radius: 0.1875rem;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
 }

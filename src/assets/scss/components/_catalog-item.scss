@@ -2,14 +2,15 @@
   display: flex;
   flex-direction: column;
   max-width: 15.625rem; // 250px
-  padding: 1.875rem 0.9375rem 0.9375rem 0.9375rem;
+  min-height: 18.75rem;
 
   border: 0.0625rem solid $color--catalog-item-border;
   border-radius: 0.1875rem; // 3px
 
   &__img {
     width: 100%;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.75rem;
+    padding: 1.8125rem 0.6875rem;
   }
 
   &__title,
@@ -23,5 +24,35 @@
     margin-bottom: 0.75rem;
 
     font-weight: bold;
+  }
+
+  &__button {
+    margin-right: 0.9375rem;
+
+    &--add-to-cart {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 1.5rem;
+        height: 1.3125rem;
+
+        background-image: url(../public/svg/basket-white.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+
+  &__info {
+    padding: 0 0.9375rem 0.9375rem 0.9375rem;
+  }
+
+  &__info-bottom {
+    display: flex;
+    align-items: center;
   }
 }
