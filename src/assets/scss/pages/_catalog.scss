@@ -1,7 +1,9 @@
 .catalog {
-  padding: 3.75rem 0 13.375rem;
-
   background-color: $color--background;
+
+  &__catalog-list {
+    padding: 3.75rem 0 13.375rem;
+  }
 
   @media screen and #{$mq-min--pad} {
     min-height: calc(100vh - 5.0625rem);
@@ -38,8 +40,6 @@
 
     &__basket {
       width: 25%;
-
-      border-left: 0.0625rem solid $color--separator;
     }
   }
 }

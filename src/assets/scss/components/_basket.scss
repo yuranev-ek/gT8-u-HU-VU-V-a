@@ -1,0 +1,15 @@
+.basket {
+  &__container {
+    padding: 1.25rem;
+  }
+
+  &__title {
+    margin-bottom: 1.875rem;
+  }
+
+  @media screen and #{$mq-min--phone} {
+    &__container {
+      padding: 2.5rem;
+    }
+  }
+}

@@ -14,4 +14,12 @@
   &:focus {
     opacity: 0.8;
   }
+
+  &--icon {
+    padding: 0;
+    min-width: 1.25rem;
+    min-height: 1.25rem;
+
+    background-color: $color--background;
+  }
 }
