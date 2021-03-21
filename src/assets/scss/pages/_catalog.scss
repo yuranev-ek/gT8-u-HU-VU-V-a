@@ -1,0 +1,8 @@
+.catalog {
+  padding: 3.75rem 0 13.375rem;
+
+  background-color: $color--background;
+
+  @media screen and #{$mq-min--pad} {
+  }
+}

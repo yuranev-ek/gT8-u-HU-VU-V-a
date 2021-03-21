@@ -8,6 +8,11 @@
 
 @import "./components/header";
 @import "./components/logo";
+@import "./components/button";
+@import "./components/catalog-list";
+@import "./components/catalog-item";
+
+@import "./pages/catalog";
 
 * {
   margin: 0;

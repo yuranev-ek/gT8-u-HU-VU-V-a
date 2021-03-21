@@ -1,18 +1,90 @@
 <template>
-  <div>
-    <base-catalog></base-catalog>
-    <base-basket></base-basket>
+  <div class="catalog">
+    <base-catalog-list :catalogItems="catalogItems" />
+    <base-basket />
   </div>
 </template>
 
 <script>
-import BaseCatalog from "@/components/BaseCatalog.vue";
+import BaseCatalogList from "@/components/BaseCatalogList.vue";
 import BaseBasket from "@/components/BaseBasket.vue";
 export default {
   name: "CatalogPage",
   components: {
-    BaseCatalog,
+    BaseCatalogList,
     BaseBasket,
+  },
+  data() {
+    return {
+      catalogItems: [
+        {
+          id: "1",
+          src: "#",
+          title: "New Balance 574 Vintage Brights",
+          price: "$ 650",
+          img: {
+            src: "/img/574-vintage-brights.png",
+            width: 228,
+            height: 130,
+          },
+        },
+        {
+          id: "2",
+          src: "#",
+          title: "New Balance Made in UK 920 Chinese New Year",
+          price: "$ 1200",
+          img: {
+            src: "/img/920-chinese-new-year.png",
+            width: 228,
+            height: 130,
+          },
+        },
+        {
+          id: "3",
+          src: "#",
+          title: "New Balance 373 Modern Classics",
+          price: "$ 800",
+          img: {
+            src: "/img/373-modern-classics.png",
+            width: 228,
+            height: 130,
+          },
+        },
+        {
+          id: "4",
+          src: "#",
+          title: "New Balance X-Racer Utility",
+          price: "$ 1000",
+          img: {
+            src: "/img/x-racer-utility.png",
+            width: 228,
+            height: 130,
+          },
+        },
+        {
+          id: "5",
+          src: "#",
+          title: "New Balance 5740 Think Colorfully",
+          price: "$ 940",
+          img: {
+            src: "/img/5740-think-colorfully.png",
+            width: 228,
+            height: 130,
+          },
+        },
+        {
+          id: "6",
+          src: "#",
+          title: "New Balance Made in UK 670 Chinese New Year",
+          price: "$ 780",
+          img: {
+            src: "/img/670-chinese-new-year.png",
+            width: 228,
+            height: 130,
+          },
+        },
+      ],
+    };
   },
 };
 </script>
