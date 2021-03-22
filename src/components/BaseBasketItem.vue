@@ -12,9 +12,11 @@
       <p class="basket-item__title">{{ title }}</p>
       <div class="basket-item__info-bottom">
         <base-counter :count="count" class="basket-item__counter" />
-        <span class="basket-item__price">
-          {{ price }}
-        </span>
+        <base-price
+          :currency="price.currency"
+          :value="price.value"
+          class="basket-item__price"
+        />
       </div>
     </div>
     <button
@@ -27,10 +29,12 @@
 
 <script>
 import BaseCounter from "@/components/BaseCounter.vue";
+import BasePrice from "@/components/BasePrice.vue";
 export default {
   name: "BaseBasketItem",
   components: {
     BaseCounter,
+    BasePrice,
   },
   props: {
     id: {
@@ -46,8 +50,14 @@ export default {
       required: true,
     },
     price: {
-      type: String,
+      type: Object,
       required: true,
+      default() {
+        return {
+          value: null,
+          currency: null,
+        };
+      },
     },
     img: {
       type: Object,

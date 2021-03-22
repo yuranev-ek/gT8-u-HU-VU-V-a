@@ -16,17 +16,23 @@
           type="button"
           :ariaLabel="ariaLabelButtonAddToCart"
         ></button>
-        <span class="catalog-item__price">
-          {{ price }}
-        </span>
+        <base-price
+          :currency="price.currency"
+          :value="price.value"
+          class="catalog-item__price"
+        />
       </div>
     </div>
   </router-link>
 </template>
 
 <script>
+import BasePrice from "@/components/BasePrice.vue";
 export default {
   name: "BaseCatalogItem",
+  components: {
+    BasePrice,
+  },
   props: {
     id: {
       type: String,
@@ -41,8 +47,14 @@ export default {
       required: true,
     },
     price: {
-      type: String,
+      type: Object,
       required: true,
+      default() {
+        return {
+          value: null,
+          currency: null,
+        };
+      },
     },
     img: {
       type: Object,

@@ -31,7 +31,10 @@ export default {
           id: "1",
           src: "#",
           title: "New Balance 574 Vintage Brights",
-          price: "$ 650",
+          price: {
+            currency: "$",
+            value: "650",
+          },
           img: {
             src: "/img/574-vintage-brights.png",
             width: 90,
@@ -43,7 +46,10 @@ export default {
           id: "2",
           src: "#",
           title: "New Balance Made in UK 920 Chinese New Year",
-          price: "$ 1 200",
+          price: {
+            currency: "$",
+            value: "1 200",
+          },
           img: {
             src: "/img/920-chinese-new-year.png",
             width: 90,
