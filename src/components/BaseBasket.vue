@@ -6,6 +6,11 @@
         <base-basket-list
           v-if="basketItems.length"
           :basket-items="basketItems"
+          @on-add-to-basket="$emit('on-add-to-basket', $event)"
+          @on-remove-from-basket="$emit('on-remove-from-basket', $event)"
+          @on-full-remove-from-basket="
+            $emit('on-full-remove-from-basket', $event)
+          "
         />
         <span v-else>No selected items</span>
       </div>

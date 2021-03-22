@@ -12,6 +12,11 @@
           :price="basketItem.price"
           :img="basketItem.img"
           :count="basketItem.count"
+          @on-add-to-basket="$emit('on-add-to-basket', $event)"
+          @on-remove-from-basket="$emit('on-remove-from-basket', $event)"
+          @on-full-remove-from-basket="
+            $emit('on-full-remove-from-basket', $event)
+          "
         />
       </div>
     </div>

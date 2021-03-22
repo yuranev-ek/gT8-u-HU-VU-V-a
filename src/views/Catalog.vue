@@ -5,7 +5,13 @@
       class="catalog__catalog-list"
       @on-add-to-basket="handlerAddToBasket"
     />
-    <base-basket :basketItems="parsedBasketItems" class="catalog__basket" />
+    <base-basket
+      :basketItems="parsedBasketItems"
+      class="catalog__basket"
+      @on-add-to-basket="handlerAddToBasket"
+      @on-remove-from-basket="handlerRemoveFromBasket"
+      @on-full-remove-from-basket="handlerFullRemoveFromBasket"
+    />
   </div>
 </template>
 
@@ -135,11 +141,31 @@ export default {
         id,
         this.basketItemIds[id] ? this.basketItemIds[id] + 1 : 1
       );
-      this.$ls.set("basketItemIds", this.basketItemIds);
+    },
+    handlerRemoveFromBasket(id) {
+      if (this.basketItemIds[id] && this.basketItemIds[id] > 1) {
+        this.basketItemIds[id] -= 1;
+      }
+    },
+    handlerFullRemoveFromBasket(id) {
+      if (this.basketItemIds[id]) {
+        this.$delete(this.basketItemIds, id);
+      }
     },
     updateBasketItemIds() {
       const savedBasketItemIds = this.$ls.get("basketItemIds");
       this.$set(this, "basketItemIds", savedBasketItemIds || {});
+    },
+    updateLocalStorage() {
+      this.$ls.set("basketItemIds", this.basketItemIds);
+    },
+  },
+  watch: {
+    basketItemIds: {
+      deep: true,
+      handler() {
+        this.updateLocalStorage();
+      },
     },
   },
 };

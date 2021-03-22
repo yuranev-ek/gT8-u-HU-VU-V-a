@@ -11,7 +11,12 @@
     <div class="basket-item__info">
       <p class="basket-item__title">{{ title }}</p>
       <div class="basket-item__info-bottom">
-        <base-counter :count="count" class="basket-item__counter" />
+        <base-counter
+          :count="count"
+          class="basket-item__counter"
+          @increment="$emit('on-add-to-basket', id)"
+          @decrement="$emit('on-remove-from-basket', id)"
+        />
         <base-price
           :currency="price.currency"
           :value="price.value"
@@ -22,6 +27,7 @@
     <button
       class="button button--icon basket-item__button basket-item__button--remove-from-cart"
       type="button"
+      @click="$emit('on-full-remove-from-basket', id)"
       :ariaLabel="ariaLabelButtonRemoveFromCart"
     ></button>
   </div>
