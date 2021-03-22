@@ -7,6 +7,11 @@
   border: 0.0625rem solid $color--catalog-item-border;
   border-radius: 0.1875rem; // 3px
 
+  &:hover,
+  &:focus {
+    border-color: $color--primary;
+  }
+
   &__img {
     width: 100%;
     margin-bottom: 0.75rem;

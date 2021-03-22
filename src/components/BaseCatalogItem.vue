@@ -12,6 +12,7 @@
       <p class="catalog-item__title">{{ title }}</p>
       <div class="catalog-item__info-bottom">
         <button
+          @click.self="addItemToBasket"
           class="button button--primary-icon catalog-item__button catalog-item__button--add-to-cart"
           type="button"
           :ariaLabel="ariaLabelButtonAddToCart"
@@ -70,6 +71,11 @@ export default {
   computed: {
     ariaLabelButtonAddToCart() {
       return `Add to cart ${this.title}`;
+    },
+  },
+  methods: {
+    addItemToBasket() {
+      this.$emit("on-add-to-basket", this.id);
     },
   },
 };

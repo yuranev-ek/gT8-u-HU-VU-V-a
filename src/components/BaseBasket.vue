@@ -3,7 +3,11 @@
     <div class="basket__container basket__container--border">
       <div class="basket__inner">
         <h3 class="h3 basket__title">{{ title }}</h3>
-        <base-basket-list :basket-items="basketItems" />
+        <base-basket-list
+          v-if="basketItems.length"
+          :basket-items="basketItems"
+        />
+        <span v-else>No selected items</span>
       </div>
     </div>
     <div class="basket__container basket__container--border">
@@ -36,6 +40,14 @@ export default {
     FormPromoCode,
     BasePriceLabel,
   },
+  props: {
+    basketItems: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
   computed: {
     calculatedSubtotal() {
       return "1 850";
@@ -47,38 +59,6 @@ export default {
   data() {
     return {
       title: "My basket",
-      basketItems: [
-        {
-          id: "1",
-          src: "#",
-          title: "New Balance 574 Vintage Brights",
-          price: {
-            currency: "$",
-            value: "650",
-          },
-          img: {
-            src: "/img/574-vintage-brights.png",
-            width: 90,
-            height: 51,
-          },
-          count: 1,
-        },
-        {
-          id: "2",
-          src: "#",
-          title: "New Balance Made in UK 920 Chinese New Year",
-          price: {
-            currency: "$",
-            value: "1 200",
-          },
-          img: {
-            src: "/img/920-chinese-new-year.png",
-            width: 90,
-            height: 51,
-          },
-          count: 2,
-        },
-      ],
       allCosts: [
         {
           price: {

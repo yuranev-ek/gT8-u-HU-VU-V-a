@@ -11,6 +11,7 @@
           :title="catalogItem.title"
           :price="catalogItem.price"
           :img="catalogItem.img"
+          @on-add-to-basket="$emit('on-add-to-basket', $event)"
         />
       </div>
     </div>

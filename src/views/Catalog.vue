@@ -3,9 +3,9 @@
     <base-catalog-list
       :catalogItems="catalogItems"
       class="catalog__catalog-list"
-      v-if="false"
+      @on-add-to-basket="handlerAddToBasket"
     />
-    <base-basket class="catalog__basket" />
+    <base-basket :basketItems="parsedBasketItems" class="catalog__basket" />
   </div>
 </template>
 
@@ -17,6 +17,21 @@ export default {
   components: {
     BaseCatalogList,
     BaseBasket,
+  },
+  mounted() {
+    this.updateBasketItemIds();
+    this.$ls.on("basketItemIds", this.updateBasketItemIds);
+  },
+  computed: {
+    parsedBasketItems() {
+      return Object.entries(this.basketItemIds).reduce((acc, cur) => {
+        const item = this.catalogItems.find((item) => item.id === cur[0]);
+        item.count = cur[1];
+        item.img.width = this.basketItemSizes.width;
+        item.img.height = this.basketItemSizes.height;
+        return [...acc, item];
+      }, []);
+    },
   },
   data() {
     return {
@@ -106,7 +121,26 @@ export default {
           },
         },
       ],
+      basketItemIds: {},
+      basketItemSizes: {
+        width: 90,
+        height: 51,
+      },
     };
+  },
+  methods: {
+    handlerAddToBasket(id) {
+      this.$set(
+        this.basketItemIds,
+        id,
+        this.basketItemIds[id] ? this.basketItemIds[id] + 1 : 1
+      );
+      this.$ls.set("basketItemIds", this.basketItemIds);
+    },
+    updateBasketItemIds() {
+      const savedBasketItemIds = this.$ls.get("basketItemIds");
+      this.$set(this, "basketItemIds", savedBasketItemIds || {});
+    },
   },
 };
 </script>
