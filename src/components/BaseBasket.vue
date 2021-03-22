@@ -36,7 +36,7 @@ export default {
           id: "2",
           src: "#",
           title: "New Balance Made in UK 920 Chinese New Year",
-          price: "$ 1200",
+          price: "$ 1 200",
           img: {
             src: "/img/920-chinese-new-year.png",
             width: 90,

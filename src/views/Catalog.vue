@@ -35,7 +35,7 @@ export default {
           id: "2",
           src: "#",
           title: "New Balance Made in UK 920 Chinese New Year",
-          price: "$ 1200",
+          price: "$ 1 200",
           img: {
             src: "/img/920-chinese-new-year.png",
             width: 228,
@@ -57,7 +57,7 @@ export default {
           id: "4",
           src: "#",
           title: "New Balance X-Racer Utility",
-          price: "$ 1000",
+          price: "$ 1 000",
           img: {
             src: "/img/x-racer-utility.png",
             width: 228,
