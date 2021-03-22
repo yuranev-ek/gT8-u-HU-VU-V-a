@@ -4,7 +4,7 @@
       <div class="basket__inner">
         <h3 class="h3 basket__title">{{ title }}</h3>
         <base-basket-list
-          v-if="basketItems.length"
+          v-if="calcQuantityOfBasketItems"
           :basket-items="basketItems"
           @on-add-to-basket="$emit('on-add-to-basket', $event)"
           @on-remove-from-basket="$emit('on-remove-from-basket', $event)"
@@ -87,6 +87,12 @@ export default {
     },
     shippingValue() {
       return Number(this.allCosts.shipping.price.value);
+    },
+    calcQuantityOfBasketItems() {
+      return this.basketItems.reduce(
+        (acc, cur) => (acc += cur.count > 0 ? 1 : 0),
+        0
+      );
     },
   },
   mounted() {
