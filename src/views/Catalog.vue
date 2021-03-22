@@ -49,6 +49,11 @@ export default {
     visibleLocalCatalog() {
       return this.isWidthLessThanDesktop ? !this.visibleBasket : true;
     },
+    publicPath() {
+      return process.env.NODE_ENV === "production"
+        ? "/gT8-u-HU-VU-V-a/dist/"
+        : "/";
+    },
   },
   data() {
     return {
@@ -62,7 +67,7 @@ export default {
             value: "650",
           },
           img: {
-            src: "/img/574-vintage-brights.png",
+            src: "./img/574-vintage-brights.png",
             width: 228,
             height: 130,
           },
@@ -76,7 +81,7 @@ export default {
             value: "1 200",
           },
           img: {
-            src: "/img/920-chinese-new-year.png",
+            src: "./img/920-chinese-new-year.png",
             width: 228,
             height: 130,
           },
@@ -90,7 +95,7 @@ export default {
             value: "800",
           },
           img: {
-            src: "/img/373-modern-classics.png",
+            src: "./img/373-modern-classics.png",
             width: 228,
             height: 130,
           },
@@ -104,7 +109,7 @@ export default {
             value: "1 000",
           },
           img: {
-            src: "/img/x-racer-utility.png",
+            src: "./img/x-racer-utility.png",
             width: 228,
             height: 130,
           },
@@ -118,7 +123,7 @@ export default {
             value: "940",
           },
           img: {
-            src: "/img/5740-think-colorfully.png",
+            src: "./img/5740-think-colorfully.png",
             width: 228,
             height: 130,
           },
@@ -132,7 +137,7 @@ export default {
             value: "780",
           },
           img: {
-            src: "/img/670-chinese-new-year.png",
+            src: "./img/670-chinese-new-year.png",
             width: 228,
             height: 130,
           },
