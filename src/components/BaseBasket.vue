@@ -1,9 +1,14 @@
 <template>
   <div class="basket">
-    <div class="basket__container">
+    <div class="basket__container basket__container--border">
       <div class="basket__inner">
         <h3 class="h3 basket__title">{{ title }}</h3>
         <base-basket-list :basket-items="basketItems" />
+      </div>
+    </div>
+    <div class="basket__container basket__container--border">
+      <div class="basket__inner">
+        <form-promo-code />
       </div>
     </div>
   </div>
@@ -11,10 +16,12 @@
 
 <script>
 import BaseBasketList from "@/components/BaseBasketList.vue";
+import FormPromoCode from "@/components/FormPromoCode.vue";
 export default {
   name: "BaseBasket",
   components: {
     BaseBasketList,
+    FormPromoCode,
   },
   data() {
     return {

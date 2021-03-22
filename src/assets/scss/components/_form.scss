@@ -1,0 +1,12 @@
+.form {
+  &__row {
+    display: flex;
+    align-items: center;
+
+    &--submit {
+      & .input {
+        margin-right: 0.625rem;
+      }
+    }
+  }
+}

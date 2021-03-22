@@ -1,10 +1,10 @@
 .basket {
   &__container {
     padding: 1.25rem;
-  }
 
-  &__title {
-    margin-bottom: 1.875rem;
+    &--border {
+      border-bottom: 0.0625rem solid $color--separator;
+    }
   }
 
   @media screen and #{$mq-min--phone} {

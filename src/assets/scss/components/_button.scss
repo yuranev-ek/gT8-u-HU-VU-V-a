@@ -1,9 +1,11 @@
 .button {
   position: relative;
 
-  min-width: 2.5rem; // 40px
-  min-height: 2.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1.875rem;
+
+  color: $color--button-label;
+  font-size: 0.875em;
+  line-height: 1.5rem;
 
   background-color: $color--button-background;
   border: none;
@@ -13,6 +15,12 @@
   &:hover,
   &:focus {
     opacity: 0.8;
+  }
+
+  &--primary-icon {
+    min-width: 2.5rem; // 40px
+    min-height: 2.5rem;
+    padding: 0.5rem;
   }
 
   &--icon {

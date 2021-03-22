@@ -12,7 +12,7 @@
       <p class="catalog-item__title">{{ title }}</p>
       <div class="catalog-item__info-bottom">
         <button
-          class="button catalog-item__button catalog-item__button--add-to-cart"
+          class="button button--primary-icon catalog-item__button catalog-item__button--add-to-cart"
           type="button"
           :ariaLabel="ariaLabelButtonAddToCart"
         ></button>
