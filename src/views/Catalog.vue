@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import BaseCatalogList from "@/components/BaseCatalogList.vue";
 import BaseBasket from "@/components/BaseBasket.vue";
 export default {
@@ -29,6 +30,7 @@ export default {
     this.$ls.on("basketItemIds", this.getBasketItemIdsFromLocalStorage);
   },
   computed: {
+    ...mapGetters(["basketItemIds"]),
     parsedBasketItems() {
       return Object.entries(this.basketItemIds).reduce((acc, cur) => {
         const item = this.catalogItems.find((item) => item.id === cur[0]);
@@ -127,7 +129,6 @@ export default {
           },
         },
       ],
-      basketItemIds: {},
       basketItemSizes: {
         width: 90,
         height: 51,
@@ -136,25 +137,17 @@ export default {
   },
   methods: {
     handlerAddToBasket(id) {
-      this.$set(
-        this.basketItemIds,
-        id,
-        this.basketItemIds[id] ? this.basketItemIds[id] + 1 : 1
-      );
+      this.$store.dispatch("setBasketItemId", id);
     },
     handlerRemoveFromBasket(id) {
-      if (this.basketItemIds[id] && this.basketItemIds[id] > 1) {
-        this.basketItemIds[id] -= 1;
-      }
+      this.$store.dispatch("removeBasketItemId", id);
     },
     handlerFullRemoveFromBasket(id) {
-      if (this.basketItemIds[id]) {
-        this.$delete(this.basketItemIds, id);
-      }
+      this.$store.dispatch("fullRemoveBasketItemId", id);
     },
     getBasketItemIdsFromLocalStorage() {
       const savedBasketItemIds = this.$ls.get("basketItemIds");
-      this.$set(this, "basketItemIds", savedBasketItemIds || {});
+      this.$store.dispatch("setBasketItemIds", savedBasketItemIds || {});
     },
     updateLocalStorage() {
       this.$ls.set("basketItemIds", this.basketItemIds);

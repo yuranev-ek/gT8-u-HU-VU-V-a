@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import BaseLogo from "@/components/BaseLogo.vue";
 export default {
   name: "TheHeader",
@@ -25,18 +26,21 @@ export default {
     this.getBasketItemIdsFromLocalStorage();
     this.$ls.on("basketItemIds", this.getBasketItemIdsFromLocalStorage);
   },
-  data() {
-    return {
-      basketItemIds: {},
-    };
-  },
   computed: {
     ariaLabelButtonCart() {
       return `items in the basket`;
     },
     calcQuantityOfBasketItems() {
-      return this.basketItemIds ? Object.keys(this.basketItemIds).length : 0;
+      let count = 0;
+      for (let key in this.basketItemIds) {
+        if (this.basketItemIds[key] > 0) {
+          count++;
+        }
+      }
+
+      return count;
     },
+    ...mapGetters(["basketItemIds"]),
   },
   methods: {
     getBasketItemIdsFromLocalStorage() {
