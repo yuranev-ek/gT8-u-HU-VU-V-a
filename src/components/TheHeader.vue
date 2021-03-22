@@ -1,16 +1,25 @@
 <template>
   <header class="header">
     <base-logo></base-logo>
-    <button
-      @click.self="addItemToBasket"
-      class="button button--icon header__icon-cart"
-      type="button"
-      :ariaLabel="ariaLabelButtonCart"
-      :data-quantity="calcQuantityOfBasketItems"
-      :class="{
-        'header__icon-cart--quantity': calcQuantityOfBasketItems,
-      }"
-    ></button>
+    <div class="header__buttons">
+      <button
+        @click.self="toggleVisibleBasket(true)"
+        class="button button--icon header__icon-cart"
+        type="button"
+        :ariaLabel="ariaLabelButtonCart"
+        :data-quantity="calcQuantityOfBasketItems"
+        :class="{
+          'header__icon-cart--quantity': calcQuantityOfBasketItems,
+        }"
+      ></button>
+      <button
+        @click.self="toggleVisibleBasket(false)"
+        class="button button--icon header__icon-close-cart"
+        type="button"
+        :ariaLabel="ariaLabelButtonCloseCart"
+        v-if="visibleBasket"
+      ></button>
+    </div>
   </header>
 </template>
 
@@ -28,7 +37,10 @@ export default {
   },
   computed: {
     ariaLabelButtonCart() {
-      return `items in the basket`;
+      return `${this.calcQuantityOfBasketItems} items in the basket`;
+    },
+    ariaLabelButtonCloseCart() {
+      return "Close basket";
     },
     calcQuantityOfBasketItems() {
       let count = 0;
@@ -40,12 +52,17 @@ export default {
 
       return count;
     },
-    ...mapGetters(["basketItemIds"]),
+    ...mapGetters(["basketItemIds", "visibleBasket"]),
   },
   methods: {
     getBasketItemIdsFromLocalStorage() {
       const savedBasketItemIds = this.$ls.get("basketItemIds");
       this.$set(this, "basketItemIds", savedBasketItemIds || {});
+    },
+    toggleVisibleBasket(bool) {
+      if (this.$screen.width < 1200) {
+        this.$store.dispatch("setVisibleBasket", bool);
+      }
     },
   },
 };

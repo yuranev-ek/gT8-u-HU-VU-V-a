@@ -177,6 +177,7 @@ export default {
   watch: {
     basketItems: {
       deep: true,
+      immediate: true,
       handler() {
         this.calculateSubtotal();
       },

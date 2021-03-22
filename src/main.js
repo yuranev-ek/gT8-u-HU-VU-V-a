@@ -11,6 +11,14 @@ Vue.use(Storage, {
   storage: "local",
 });
 
+Vue.prototype.$screen = Vue.observable({
+  width: window.innerWidth,
+});
+
+window.addEventListener("resize", () => {
+  Vue.prototype.$screen.width = window.innerWidth;
+});
+
 new Vue({
   router,
   store,

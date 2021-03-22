@@ -45,6 +45,32 @@
     }
   }
 
+  &__icon-close-cart {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      width: 1.125rem;
+      height: 1.125rem;
+
+      background-image: url(../public/svg/close.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+
+    & .header__icon-close-cart {
+      margin-left: 1.5625rem;
+    }
+  }
+
   @media screen and #{$mq-min--pad} {
     padding: 1.625rem 1.875rem 1.375rem 1.875rem;
   }

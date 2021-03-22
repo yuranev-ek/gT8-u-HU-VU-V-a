@@ -1,11 +1,13 @@
 <template>
   <div class="catalog">
     <base-catalog-list
+      v-show="visibleLocalCatalog"
       :catalogItems="catalogItems"
       class="catalog__catalog-list"
       @on-add-to-basket="handlerAddToBasket"
     />
     <base-basket
+      v-show="visibleLocalBasket"
       :basketItems="parsedBasketItems"
       class="catalog__basket"
       @on-add-to-basket="handlerAddToBasket"
@@ -30,15 +32,22 @@ export default {
     this.$ls.on("basketItemIds", this.getBasketItemIdsFromLocalStorage);
   },
   computed: {
-    ...mapGetters(["basketItemIds"]),
-    parsedBasketItems() {
-      return Object.entries(this.basketItemIds).reduce((acc, cur) => {
-        const item = this.catalogItems.find((item) => item.id === cur[0]);
-        item.count = cur[1];
-        item.img.width = this.basketItemSizes.width;
-        item.img.height = this.basketItemSizes.height;
-        return [...acc, item];
-      }, []);
+    ...mapGetters(["basketItemIds", "visibleBasket"]),
+    clientWidth() {
+      return this.$screen.width;
+    },
+    isWidthLessThanDesktop() {
+      return this.$screen.width < 1200;
+    },
+    visibleLocalBasket() {
+      if (this.isWidthLessThanDesktop) {
+        return this.visibleBasket;
+      } else {
+        return true;
+      }
+    },
+    visibleLocalCatalog() {
+      return this.isWidthLessThanDesktop ? !this.visibleBasket : true;
     },
   },
   data() {
@@ -133,6 +142,7 @@ export default {
         width: 90,
         height: 51,
       },
+      parsedBasketItems: [],
     };
   },
   methods: {
@@ -152,12 +162,25 @@ export default {
     updateLocalStorage() {
       this.$ls.set("basketItemIds", this.basketItemIds);
     },
+    parseBasketItems() {
+      this.parsedBasketItems = Object.entries(this.basketItemIds).reduce(
+        (acc, cur) => {
+          const item = this.catalogItems.find((item) => item.id === cur[0]);
+          item.count = cur[1];
+          item.img.width = this.basketItemSizes.width;
+          item.img.height = this.basketItemSizes.height;
+          return [...acc, item];
+        },
+        []
+      );
+    },
   },
   watch: {
     basketItemIds: {
       deep: true,
       handler() {
         this.updateLocalStorage();
+        this.parseBasketItems();
       },
     },
   },

@@ -6,9 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     basketItemIds: {},
+    visibleBasket: false, // on mobile and basket
   },
   getters: {
     basketItemIds: (state) => state.basketItemIds,
+    visibleBasket: (state) => state.visibleBasket,
   },
   mutations: {
     setBasketItemIds(state, basketItemIds) {
@@ -18,7 +20,7 @@ export default new Vuex.Store({
       if (state.basketItemIds[id]) {
         state.basketItemIds[id] += 1;
       } else {
-        state.basketItemIds[id] = 1;
+        Vue.set(state.basketItemIds, id, 1);
       }
     },
     removeBasketItemId(state, id) {
@@ -35,6 +37,9 @@ export default new Vuex.Store({
         state.basketItemIds[id] = 0;
       }
     },
+    setVisibleBasket(state, bool) {
+      state.visibleBasket = bool;
+    },
   },
   actions: {
     setBasketItemIds(store, payload) {
@@ -48,6 +53,9 @@ export default new Vuex.Store({
     },
     fullRemoveBasketItemId(store, payload) {
       store.commit("fullRemoveBasketItemId", payload);
+    },
+    setVisibleBasket(store, payload) {
+      store.commit("setVisibleBasket", payload);
     },
   },
 });
