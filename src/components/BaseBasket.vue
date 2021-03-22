@@ -54,9 +54,6 @@ export default {
     },
   },
   computed: {
-    calculatedSubtotal() {
-      return "1 850";
-    },
     calculatedTotal() {
       return "2 100";
     },
@@ -64,29 +61,29 @@ export default {
   data() {
     return {
       title: "My basket",
-      allCosts: [
-        {
+      allCosts: {
+        subtotal: {
           price: {
             value: "100",
             currency: "$",
           },
           label: "Subtotal",
         },
-        {
+        tax: {
           price: {
             value: "100",
             currency: "$",
           },
           label: "Tax",
         },
-        {
+        shipping: {
           price: {
             value: "150",
             currency: "$",
           },
           label: "Shipping",
         },
-        {
+        total: {
           price: {
             value: "2 100",
             currency: "$",
@@ -94,8 +91,27 @@ export default {
           label: "Total",
           additionalClasses: "price-label--main",
         },
-      ],
+      },
     };
+  },
+  methods: {
+    calculateSubtotal() {
+      this.allCosts.subtotal.price.value = this.basketItems.reduce(
+        (acc, cur) => {
+          const preparedPriceValue = parseInt(cur.price.value.replace(" ", ""));
+          return (acc += preparedPriceValue * cur.count);
+        },
+        0
+      );
+    },
+  },
+  watch: {
+    basketItems: {
+      deep: true,
+      handler() {
+        this.calculateSubtotal();
+      },
+    },
   },
 };
 </script>
