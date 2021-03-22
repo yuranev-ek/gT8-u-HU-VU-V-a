@@ -6,11 +6,9 @@
         :value="value"
         :type="type"
         class="input__field"
-        :class="errorClass"
         :placeholder="placeholder"
         @input="onInput"
       />
-      <div v-if="error" class="input__error">{{ error }}</div>
     </label>
   </div>
 </template>
@@ -19,10 +17,6 @@
 export default {
   name: "BaseInput",
   props: {
-    error: {
-      type: String,
-      default: null,
-    },
     value: {
       type: [String, Number],
       default: null,
@@ -43,11 +37,6 @@ export default {
   model: {
     prop: "value",
     event: "on-input",
-  },
-  computed: {
-    errorClass() {
-      return this.error ? "input--error" : "";
-    },
   },
   methods: {
     onInput(event) {

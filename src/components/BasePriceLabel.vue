@@ -1,7 +1,11 @@
 <template>
   <div class="price-label" :class="additionalClasses">
-    <span>{{ label }}</span>
-    <base-price :value="price.value" :currency="price.currency" />
+    <slot name="label">
+      <span>{{ label }}</span>
+    </slot>
+    <slot name="price">
+      <base-price :value="price.value" :currency="price.currency" />
+    </slot>
   </div>
 </template>
 

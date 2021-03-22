@@ -6,3 +6,10 @@ $font--primary: "Roboto", "Open Sans", sans-serif;
   font-size: 1.125em;
   line-height: 1.3125rem;
 }
+
+.text {
+  &--through {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+}

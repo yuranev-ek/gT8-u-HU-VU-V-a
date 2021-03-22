@@ -25,8 +25,8 @@ export default {
     BaseBasket,
   },
   mounted() {
-    this.updateBasketItemIds();
-    this.$ls.on("basketItemIds", this.updateBasketItemIds);
+    this.getBasketItemIdsFromLocalStorage();
+    this.$ls.on("basketItemIds", this.getBasketItemIdsFromLocalStorage);
   },
   computed: {
     parsedBasketItems() {
@@ -152,7 +152,7 @@ export default {
         this.$delete(this.basketItemIds, id);
       }
     },
-    updateBasketItemIds() {
+    getBasketItemIdsFromLocalStorage() {
       const savedBasketItemIds = this.$ls.get("basketItemIds");
       this.$set(this, "basketItemIds", savedBasketItemIds || {});
     },

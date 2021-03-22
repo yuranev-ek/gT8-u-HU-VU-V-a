@@ -1,5 +1,5 @@
 <template>
-  <span>{{ price }}</span>
+  <span :class="additionalClass">{{ price }}</span>
 </template>
 
 <script>
@@ -15,6 +15,9 @@ export default {
       type: [Number, String],
       default: 0,
       required: true,
+    },
+    additionalClass: {
+      type: String,
     },
   },
   computed: {
