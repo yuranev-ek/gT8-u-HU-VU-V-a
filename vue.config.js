@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: "/gT8-u-HU-VU-V-a/",
+  publicPath: "/gT8-u-HU-VU-V-a/dist/",
 };
