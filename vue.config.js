@@ -1,3 +1,4 @@
 module.exports = {
-  publicPath: "/gT8-u-HU-VU-V-a/dist/",
+  publicPath:
+    process.env.NODE_ENV === "production" ? "/gT8-u-HU-VU-V-a/dist/" : "/",
 };
