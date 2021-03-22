@@ -3,6 +3,7 @@
     <base-catalog-list
       :catalogItems="catalogItems"
       class="catalog__catalog-list"
+      v-if="false"
     />
     <base-basket class="catalog__basket" />
   </div>

@@ -1,0 +1,12 @@
+.price-label {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 0.875em;
+  line-height: 2.125rem;
+
+  &--main {
+    font-weight: bold;
+    font-size: 1.125em;
+  }
+}

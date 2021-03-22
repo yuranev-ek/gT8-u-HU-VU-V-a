@@ -4,12 +4,17 @@
 
     &--border {
       border-bottom: 0.0625rem solid $color--separator;
+      padding-bottom: 1.1875rem;
     }
   }
 
   @media screen and #{$mq-min--phone} {
     &__container {
       padding: 2.5rem;
+
+      &--border {
+        padding-bottom: 2.4375rem;
+      }
     }
   }
 }
